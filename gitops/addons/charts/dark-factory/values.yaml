@@ -183,7 +183,7 @@ holdout:
 #      {src,diff} in S3 → create-code-review → start-job → list-findings via the
 #      workflow's IRSA role. Setup: docs/dark-factory/AGENT-INSTALL.md.
 review:
-  enabled: true
+  enabled: false
   # The label the DevOps clear-gate applies; the Security Agent step only runs
   # once it's present (so DevOps reviews first, Security second).
   handoffLabel: needs-security-review
@@ -297,7 +297,7 @@ securityAgent:
 # App check-run and WAIT for it. All paths need ONE one-time console connect
 # (repo ↔ Agent Space); that is the single manual step in the pipeline (docs §6.2).
 devopsAgent:
-  enabled: true
+  enabled: false
   # How the df-run devops-gate confirms the DevOps Agent cleared:
   #   check → wait for the DevOps Agent GitHub App's check-run (DEFAULT, native).
   #   label → wait for a coder-applied handoffLabel (fallback if you drive DevOps
@@ -343,7 +343,7 @@ iterate:
 # (scale-to-zero), resumes the SAME VM on a fix round, and terminates it at merge. These
 # values feed that template; they mirror the agent-sandbox-lambda chart's microvm.* keys.
 microvm:
-  enabled: true
+  enabled: false
   region: us-west-2
   namespace: agent-sandbox-system     # where the Microvm CR + platform MicrovmSandbox live
   # aws-cli v2 (has the lambda-microvms verbs); kubectl is fetched at step start.
@@ -501,9 +501,9 @@ trigger:
     # gate then grades every run against nothing. Add a holdout/<owner>-<name>/
     # directory whenever you add a repo here.
     repositories:
-      - owner: replace-me-owner
+      - owner: mmeckes
         names:
-          - replace-me-repo
+          - oap-dark-factory-demo
     # Public URL GitHub posts webhooks to (ALB ingress host + endpoint).
     # Left empty; supplied at deploy time from the ingress_domain_name
     # cluster-secret annotation via the dark-factory registry valuesObject.

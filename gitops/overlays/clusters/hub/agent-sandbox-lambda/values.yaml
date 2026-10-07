@@ -6,7 +6,7 @@
 # coder artifact is published to S3. Managed KRO + Managed ACK capabilities are
 # ACTIVE on the hub. The ARNs below are public identifiers (not secrets).
 microvm:
-  enabled: true
+  enabled: false
   region: us-west-2
   # MUST be kro.run — EKS Managed KRO only watches the kro.run group (see chart values.yaml).
   apiGroup: kro.run

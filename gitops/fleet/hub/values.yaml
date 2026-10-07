@@ -31,12 +31,12 @@ externalSecret:
 # and already read by ArgoCD (fleet-secret-hub and clusters-default already carry
 # a `ref: overlay` source pointing at this same URL).
 overlay:
-  repoURL: https://github.com/aws-samples/sample-open-agentic-platform.git
+  repoURL: https://github.com/mmeckes/sample-open-agentic-platform.git
   # MUST be a revision that actually CONTAINS the overlay files above. Kept in step
   # with this cluster secret's fleetRepoRevision — update BOTH when this work
   # merges (fix/parity-with-peeks -> main), otherwise $overlay resolves to a branch
   # without overlays/clusters/hub/karpenter/values.yaml and manageAddons silently
   # stays false.
-  revision: fix/parity-with-peeks
+  revision: demo
   # Repo-relative root holding configs/ + overlays/. Matches addonsRepoBasepath.
   basepath: gitops/

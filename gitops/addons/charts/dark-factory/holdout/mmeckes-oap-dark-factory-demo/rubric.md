@@ -1,4 +1,4 @@
-# Holdout rubric — replace-me-owner/replace-me-repo
+# Holdout rubric — mmeckes/oap-dark-factory-demo
 
 The judge scores each scenario **PASS/FAIL** against the built code on the coder's `df/issue-N`
 branch. This rubric is for the LLM judge only; the coder never sees it.
