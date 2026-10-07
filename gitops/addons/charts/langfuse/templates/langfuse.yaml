@@ -402,6 +402,10 @@ spec:
       labels:
         app: langfuse-minio
     spec:
+      {{- with .Values.minio.podSecurityContext }}
+      securityContext:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       containers:
         - name: minio
           image: {{ .Values.minio.image.repository }}:{{ .Values.minio.image.tag }}

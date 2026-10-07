@@ -91,9 +91,15 @@ redis:
 
 # MinIO (S3-compatible blob storage for Langfuse v3 event upload)
 minio:
+  # docker.io/minio/minio and quay.io/minio/minio are no longer published;
+  # Chainguard's image is maintained (runs as non-root uid 65532).
   image:
-    repository: minio/minio
+    repository: cgr.dev/chainguard/minio
     tag: "latest"
+  podSecurityContext:
+    runAsUser: 65532
+    runAsGroup: 65532
+    fsGroup: 65532
   storage: 10Gi
   rootUser: minio
   rootPassword: miniosecret
